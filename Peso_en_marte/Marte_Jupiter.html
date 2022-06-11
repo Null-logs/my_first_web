@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html>
+
+    <head>
+        <title> 
+            AYUDA 
+        </title>
+
+        <style style="text/css">
+            body
+            {
+                background-color: darkcyan;
+                color: lightgrey;
+                font-family: Helvetica;
+            }
+            strong
+            {
+                background-color:violet;
+            }
+        </style>
+
+    </head>
+    
+    <body>
+    
+        <h1>
+            Tu peso en otro planeta
+        </h1>
+
+        <p>
+            En la tierra pesas distinto que en Marte o Jupiter
+        </p>
+
+        <script>
+            var planeta = prompt("Elije un planeta \n Marte : 1 \n Jupiter : 2");
+            planeta = parseInt(planeta);
+            var usr = prompt("Cuál es tu peso?");
+            var peso = parseInt(usr);
+            var g_tierra = 9.8;
+            var g_marte = 3.7;
+            var g_jupiter = 24.8;
+            //var peso = 77;
+            var peso_fin;
+            var nom_plan;
+            if(planeta == 1)
+            {
+                peso_fin = peso * g_marte/g_tierra;
+                nom_plan = "Marte"
+            }
+            else if(planeta == 2)
+            {
+                peso_fin = peso * g_jupiter/g_tierra;
+                nom_plan = "Jupiter"
+            }
+            else
+            {
+                peso_fin = 1000000000;
+                nom_plan = "Eres tonto o qué?"
+            }
+            //peso_fin = peso * g_marte/g_tierra;
+            peso_fin = peso_fin.toFixed(2);
+            document.write("Tu peso en <strong>"  + nom_plan + "</strong> es de <strong>" + peso_fin + " kilos </string>");
+        </script>
+    </body>
+
+</html>

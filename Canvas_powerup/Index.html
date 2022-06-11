@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title> AYUDA </title>
+        <link rel="stylesheet" href="Index.css">
+    </head>
+
+    <body>
+        <header title="primer_bloc"> 
+            <h1>Esta pagina graficará muy potente</h1>
+        </header>
+
+        <div title="segundo_bloc">
+
+            <p> Cuantas lineas quiere? </p>
+            <input type="text" id="txt_no.lineas" />
+            <p> Elige un color </p>
+            <input type="color" id="clr_color" />
+            <p> Escoge la posición </p>
+            <div title="eleccion_pos">
+                <select id="lugarcito">
+                    <option id="estrella">
+                        Estrella
+                    </option>
+                    <option id="circulo">
+                        Circulo
+                    </option>
+                    <option id="estrella_circulo">
+                        Estrella con circulo
+                    </option>
+                </select>
+            </div>
+            <p>De que tamaño lo quieres?</p>
+            <input type="text" placeholder="ejemplo:''300'" maxlength="4"/ id="tamanito">
+            <p></p>
+            <input type="button" value="Fire" id="bttn_fuego" />
+            <p></p>
+        </div>
+
+        <div title="canvas">
+            <canvas id="canvas_dibujito"> </canvas>
+        </div>
+        <hr/>
+        <p> Y así queda el dibujo </p>
+        <input type="button" value="Clear" id="bttn_clear" /> 
+        <Script src="Index.js"></Script>
+
+    </body>
+</html>
