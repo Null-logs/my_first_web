@@ -1,20 +1,4 @@
-
-/*
-var z = aleatorio(10, 20);
-document.write(z);
-*/
-
-var i = 0;
-while(i < 10){
-    document.write(aleatorio(3, 1) + " ");
-    i++;
-}
-
-
-
-
-
-function aleatorio (min,max){ 
+function aleatorio (min,max){
 
     /*
     var resultado;
@@ -23,4 +7,130 @@ function aleatorio (min,max){
     */
     return Math.floor(Math.random() * (max - min)) + min;
 }
+
+function dibujar(){
+    if(fondo.cargaOk){
+        papel.drawImage(fondo.imagen, 0, 0);
+    }
+
+    // if(vaca.cargarOk){
+    //     for (i = 0; i <= limiteDibujo; i++)
+    //     {
+    //         var x = aleatorio(0,6);
+    //         var y = aleatorio(0,6);
+    //         var caudra = 70;
+    //         papel.drawImage(vaca.imagen, x*caudra, y*caudra);
+    //     }
+    // }
+
+    // if(cerdo.cargaOk){
+    //     for (i = 0; i <= limiteDibujo; i++)
+    //     {
+    //         var x = aleatorio(0,8);
+    //         var y = aleatorio(0,8);
+    //         var caudra = 50;
+    //         papel.drawImage(cerdo.imagen, x*caudra, y*caudra);
+    //     }
+    // }
+
+    // if(pollo.cargaOk){
+    //     for (i = 0; i <= limiteDibujo; i++)
+    //     {
+    //         var x = aleatorio(0,8);
+    //         var y = aleatorio(0,8);
+    //         var caudra = 50;
+    //         papel.drawImage(pollo.imagen, x*caudra, y*caudra);
+    //     }
+    // }
+
+}
+
+function carga(imageName){
+    imageName.cargaOk = true;
+    dibujar();
+}
+
+function cargarFondo(){
+    fondo.cargaOk = true;
+    dibujar();
+}
+
+function cargarVacas(){
+    vaca.cargarOk = true;
+    dibujar();
+}
+
+function cargarCerdos(){
+    cerdo.cargaOk = true;
+    dibujar();
+}
+
+function cargaPollos(){
+    pollo.cargaOk = true;
+    dibujar();
+
+}
+
+
+
+function manufacturaDeJsons(imageName){
+    var imageName = {
+        url: "./Recursos/" + imageName + ".png",
+        cargaOk: false
+    }
+
+    return imageName;
+}
+
+
+var limiteDibujo = aleatorio(0,5);
+console.log(limiteDibujo);
+//Dibujar el fondo de la villa
+var vp = document.getElementById("villaPLatzi");
+var papel = vp.getContext("2d");
+
+var fondo = manufacturaDeJsons("tile");
+
+// var fondo = {
+//     url: "./Recursos/tile.png",
+//     cargarOk: false
+// }
+
+var vaca = manufacturaDeJsons("vaca");
+
+// var vaca = {
+//     url: "./Recursos/vaca.png",
+//     cargarOk: false
+// }
+
+var cerdo = manufacturaDeJsons("cerdo")
+
+// var cerdo = {
+//     url: "./Recursos/cerdo.png",
+//     cargaOk: false
+// }
+
+var pollo = manufacturaDeJsons("pollo");
+
+// var pollo = {
+//     url: "./Recursos/pollo.png",
+//     cargaOk: false
+// }
+
+fondo.imagen = new Image();
+fondo.imagen.src = fondo.url;
+fondo.imagen.addEventListener("load", cargarFondo);
+
+vaca.imagen = new Image();
+vaca.imagen.src = vaca.url;
+vaca.imagen.addEventListener("load", cargarVacas)
+
+
+cerdo.imagen = new Image();
+cerdo.imagen.src = cerdo.url;
+cerdo.imagen.addEventListener("load", cargarCerdos);
+
+pollo.imagen = new Image();
+pollo.imagen.src = pollo.url;
+pollo.imagen.addEventListener("load", cargaPollos);
 
