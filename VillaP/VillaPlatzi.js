@@ -80,6 +80,9 @@ function manufacturaDeJsons(imageName){
         cargaOk: false
     }
     
+    imageName.imagen = new Image();
+    imageName.imagen.src = imageName.url;
+
     return imageName;
 }
 
@@ -111,29 +114,29 @@ var fondo = manufacturaDeJsons("tile");
 //     cargarOk: false
 // }
 
-var vaca = manufacturaDeJsons("vaca");
+// var vaca = manufacturaDeJsons("vaca");
 
 // var vaca = {
 //     url: "./Recursos/vaca.png",
 //     cargarOk: false
 // }
 
-var cerdo = manufacturaDeJsons("cerdo")
+//var cerdo = manufacturaDeJsons("cerdo")
 
 // var cerdo = {
 //     url: "./Recursos/cerdo.png",
 //     cargaOk: false
 // }
 
-var pollo = manufacturaDeJsons("pollo");
+//var pollo = manufacturaDeJsons("pollo");
 
 // var pollo = {
 //     url: "./Recursos/pollo.png",
 //     cargaOk: false
 // }
 
-fondo.imagen = new Image();
-fondo.imagen.src = fondo.url;
+// fondo.imagen = new Image();
+// fondo.imagen.src = fondo.url;
 fondo.imagen.addEventListener("load", cargarFondo);
 
 // vaca.imagen = new Image();
@@ -148,5 +151,3 @@ fondo.imagen.addEventListener("load", cargarFondo);
 // pollo.imagen = new Image();
 // pollo.imagen.src = pollo.url;
 // pollo.imagen.addEventListener("load", cargaPollos);
-
-Esto esta en la rama experimento
