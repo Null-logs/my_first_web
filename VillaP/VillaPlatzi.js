@@ -149,3 +149,4 @@ fondo.imagen.addEventListener("load", cargarFondo);
 // pollo.imagen.src = pollo.url;
 // pollo.imagen.addEventListener("load", cargaPollos);
 
+Esto esta en la rama experimento
