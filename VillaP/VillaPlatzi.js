@@ -9,6 +9,7 @@ function aleatorio (min,max){
 }
 
 function dibujar(){
+    console.log(fondo.cargaOk);
     if(fondo.cargaOk){
         papel.drawImage(fondo.imagen, 0, 0);
     }
@@ -45,7 +46,7 @@ function dibujar(){
 
 }
 
-function carga(imageName){
+function cargar(imageName){
     imageName.cargaOk = true;
     dibujar();
 }
@@ -78,9 +79,22 @@ function manufacturaDeJsons(imageName){
         url: "./Recursos/" + imageName + ".png",
         cargaOk: false
     }
-
+    
     return imageName;
 }
+
+// function manufacturaAgregarImagen(imageName){
+//     imageName.imagen = new Image();
+//     imageName.imagen.src = imageName.url;
+    
+//     console.log(fondo);
+
+//     imageName.imagen.addEventListener("load", cargarFondo());
+
+//     console.log(fondo);
+
+//     return imageName;
+// }
 
 
 var limiteDibujo = aleatorio(0,5);
@@ -90,6 +104,7 @@ var vp = document.getElementById("villaPLatzi");
 var papel = vp.getContext("2d");
 
 var fondo = manufacturaDeJsons("tile");
+// fondo = manufacturaAgregarImagen(fondo);
 
 // var fondo = {
 //     url: "./Recursos/tile.png",
@@ -121,16 +136,16 @@ fondo.imagen = new Image();
 fondo.imagen.src = fondo.url;
 fondo.imagen.addEventListener("load", cargarFondo);
 
-vaca.imagen = new Image();
-vaca.imagen.src = vaca.url;
-vaca.imagen.addEventListener("load", cargarVacas)
+// vaca.imagen = new Image();
+// vaca.imagen.src = vaca.url;
+// vaca.imagen.addEventListener("load", cargarVacas)
 
 
-cerdo.imagen = new Image();
-cerdo.imagen.src = cerdo.url;
-cerdo.imagen.addEventListener("load", cargarCerdos);
+// cerdo.imagen = new Image();
+// cerdo.imagen.src = cerdo.url;
+// cerdo.imagen.addEventListener("load", cargarCerdos);
 
-pollo.imagen = new Image();
-pollo.imagen.src = pollo.url;
-pollo.imagen.addEventListener("load", cargaPollos);
+// pollo.imagen = new Image();
+// pollo.imagen.src = pollo.url;
+// pollo.imagen.addEventListener("load", cargaPollos);
 
