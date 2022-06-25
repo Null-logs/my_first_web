@@ -26,24 +26,24 @@ function overlayHTML(peticionDinero){
 }
 
 
-function underValueBox(){
+// function underValueBox(){
 
-    console.log(caja.length);
-    var max;
-    var aux
+//     console.log(caja.length);
+//     var max;
+//     var aux
 
-    for(var i = caja.length; i <= 2; i--){
-        if(caja[i-1].valor > caja[i-2].valor){
-            max = caja[i-1].valor;
-            aux = caja[i-2].valor;
-        }else{
-            max = caja[i-2].valor;
-            aux = caja[i-1].valor;
-        }
-    }
+//     for(var i = caja.length; i <= 2; i--){
+//         if(caja[i-1].valor > caja[i-2].valor){
+//             max = caja[i-1].valor;
+//             aux = caja[i-2].valor;
+//         }else{
+//             max = caja[i-2].valor;
+//             aux = caja[i-1].valor;
+//         }
+//     }
 
-    return max;
-}
+//     return max;
+// }
 
 function requestATM(){
 
@@ -51,7 +51,7 @@ function requestATM(){
     peticionDinero = numDinero.value;
 
     console.log(peticionDinero);
-    console.log(underValueBox());
+    // console.log(underValueBox());
 
     for (var iterador in caja) {
 
