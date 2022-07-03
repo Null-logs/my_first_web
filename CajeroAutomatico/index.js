@@ -1,20 +1,21 @@
 
-function dibujar(x,y){
+function dibujar(valor,x,y){
 
-    if(imagenesBilletes["50"].cargaOk){
+    if(imagenesBilletes["50"].cargaOk && valor == 50){
         papel.drawImage(imagenesBilletes["50"].imagen, x, y);
     }
 
-    // if(pollo.cargaOk){
-    //     dibujarCuadras(pollo);
-    // }
+    if(imagenesBilletes["10"].cargaOk && valor == 10){
+        papel.drawImage(imagenesBilletes["10"].imagen, x, y);
+    }
 
-    // if(cerdo.cargaOk && cerdo.aux == 1){
-    //     papel.drawImage(cerdo.imagen, x, y);
-    // }
+    if(imagenesBilletes["20"].cargaOk && valor == 20){
+        papel.drawImage(imagenesBilletes["20"].imagen, x, y);
+    }
 }
 
 function manufacturaDeJsons(imageName){
+    var valorBillete = imageName;
     var imageName = {
         url: "./PakimanesPng/" + imageName + ".png",
         cargaOk: false
@@ -22,6 +23,7 @@ function manufacturaDeJsons(imageName){
     
     imageName.imagen = new Image();
     imageName.imagen.src = imageName.url;
+    imageName.nombre = valorBillete;
 
     return imageName;
 }
@@ -38,12 +40,16 @@ function overlayHTML(peticionDinero){
         for(var object of billetesEntregados){
             if(object.cantidad > 0){
                 outpuATM.innerHTML = outpuATM.innerHTML + object.cantidad + " Billetes entregados de $" + object.valor + "<br />";
-                dibujar(x,x);
-                x+=10;
+            }
+
+            for(let i = 0; i<object.cantidad; i++){
+                dibujar(object.valor,x,x);
+                x+=15;
+                console.log(object.valor);
+                console.log(typeof(object.valor));
             }
         }
     }
-
 }
 
 
@@ -55,13 +61,13 @@ function overlayHTML(peticionDinero){
 
 //     for(var i = caja.length; i <= 2; i--){
 //         if(caja[i-1].valor > caja[i-2].valor){
-//             max = caja[i-1].valor;
+//   imagenesBilletes.push(manufacturaDeJsons("50"));          max = caja[i-1].valor;
 //             aux = caja[i-2].valor;
 //         }else{
 //             max = caja[i-2].valor;
 //             aux = caja[i-1].valor;
 //         }
-//     }
+//   imagenesBilletes.push(manufacturaDeJsons("50"));  }
 
 //     return max;
 // }
@@ -118,6 +124,17 @@ var imagenesBilletes = [];
 imagenesBilletes[ "50" ] = manufacturaDeJsons("50");
 imagenesBilletes[ "10" ] = manufacturaDeJsons("10");
 imagenesBilletes[ "20" ] = manufacturaDeJsons("20");
+
+
 imagenesBilletes["50"].imagen.addEventListener("load", function(){
     imagenesBilletes["50"].cargaOk = true;
 });
+
+imagenesBilletes["10"].imagen.addEventListener("load", function(){
+    imagenesBilletes["10"].cargaOk = true;
+});
+
+imagenesBilletes["20"].imagen.addEventListener("load", function(){
+    imagenesBilletes["20"].cargaOk = true;
+});
+
