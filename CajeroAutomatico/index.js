@@ -55,6 +55,8 @@ function overlayHTML(peticionDinero){
 
 function getUnderValueBox(){
     
+    // Si en un futuro se insertan billetes de distintos valores a la caja podemos obtener, no importando la cantidad del tipo de estos, el que tenga menor valor.
+
     let valores = [];
 
     for(let objetoCaja of caja){
@@ -85,30 +87,41 @@ function requestATM(){
     // console.log(peticionDinero);
     // console.log(getUnderValueBox());
 
+    if(peticionDinero%getUnderValueBox() == 0){
 
+        for (var iterador in caja) {
 
-    for (var iterador in caja) {
-
-        if (peticionDinero > 0){
-
-            NoBilletesEntrega = Math.floor(peticionDinero/caja[iterador].valor)
+            if (peticionDinero > 0){
+    
+                NoBilletesEntrega = Math.floor(peticionDinero/caja[iterador].valor)
+                    
+                if(NoBilletesEntrega > caja[iterador].cantidad){
+                    contadorBilletes = caja[iterador].cantidad;
                 
-            if(NoBilletesEntrega > caja[iterador].cantidad){
-                contadorBilletes = caja[iterador].cantidad;
-            
-            }else{
-                contadorBilletes = NoBilletesEntrega;
-            
+                }else{
+                    contadorBilletes = NoBilletesEntrega;
+                
+                }
+                billetesEntregados.push(new Billete(caja[iterador].valor,contadorBilletes));
+                peticionDinero = peticionDinero - (caja[iterador].valor*contadorBilletes);
             }
-            billetesEntregados.push(new Billete(caja[iterador].valor,contadorBilletes));
-            peticionDinero = peticionDinero - (caja[iterador].valor*contadorBilletes);
         }
+    
+        overlayHTML(peticionDinero);
+
+    }else{
+        outpuATM.innerHTML = "NO ES POSIBLE ENTREGARLE ESA CANTIDAD JOVEN DX"
     }
 
-    overlayHTML(peticionDinero);
 }
 
+function showMoneyInBox(){
+    outpuATM.innerHTML = "Billetes en caja <hr />";
 
+        for(var object of caja){
+                outpuATM.innerHTML = outpuATM.innerHTML + object.cantidad + " Billetes en caja de $" + object.valor + "<br />";
+        }
+}
 
 var caja = [];
     caja.push(new Billete(50,3));
@@ -123,6 +136,8 @@ var NoBilletesEntrega = 0;
 
 var vp = document.getElementById("villaPLatzi");
 var papel = vp.getContext("2d");
+
+showMoneyInBox();
 
 var btnExtraerDInero = document.getElementById("btnExtraerDInero");
     btnExtraerDInero.addEventListener("click",requestATM);
