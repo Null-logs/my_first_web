@@ -53,32 +53,39 @@ function overlayHTML(peticionDinero){
 }
 
 
-// function underValueBox(){
+function getUnderValueBox(){
+    
+    let valores = [];
 
-//     console.log(caja.length);
-//     var max;
-//     var aux
+    for(let objetoCaja of caja){
+        valores.push(objetoCaja.valor);
+    }
 
-//     for(var i = caja.length; i <= 2; i--){
-//         if(caja[i-1].valor > caja[i-2].valor){
-//   imagenesBilletes.push(manufacturaDeJsons("50"));          max = caja[i-1].valor;
-//             aux = caja[i-2].valor;
-//         }else{
-//             max = caja[i-2].valor;
-//             aux = caja[i-1].valor;
-//         }
-//   imagenesBilletes.push(manufacturaDeJsons("50"));  }
+    let menor = valores[0]; 
+    // console.log(menor);
 
-//     return max;
-// }
+    for(let indexValores = 1; indexValores<valores.length; indexValores++){
+        if(menor > valores[indexValores]){
+            menor = valores[indexValores];
+        }
+        // console.log(menor);
+    }
+
+    // console.log(menor);
+
+    return menor;    
+}
+
 
 function requestATM(){
 
     var numDinero = document.getElementById("numDinero");
     peticionDinero = numDinero.value;
 
-    console.log(peticionDinero);
-    // console.log(underValueBox());
+    // console.log(peticionDinero);
+    // console.log(getUnderValueBox());
+
+
 
     for (var iterador in caja) {
 
