@@ -1,8 +1,8 @@
 
-function dibujar(){
+function dibujar(x,y){
 
     if(imagenesBilletes["50"].cargaOk){
-        papel.drawImage(imagenesBilletes["50"].imagen, 0, 0);
+        papel.drawImage(imagenesBilletes["50"].imagen, x, y);
     }
 
     // if(pollo.cargaOk){
@@ -34,11 +34,12 @@ function overlayHTML(peticionDinero){
         outpuATM.innerHTML = "NO HAY DINERO DX"
     }else{
         outpuATM.innerHTML = "Billetes entregados <hr />";
-
+        var x = 0;
         for(var object of billetesEntregados){
             if(object.cantidad > 0){
                 outpuATM.innerHTML = outpuATM.innerHTML + object.cantidad + " Billetes entregados de $" + object.valor + "<br />";
-                //object.mostrarBilletes();
+                dibujar(x,x);
+                x+=10;
             }
         }
     }
@@ -94,8 +95,6 @@ var imagenesBilletes = [];
 imagenesBilletes[ "50" ] = manufacturaDeJsons("50");
 imagenesBilletes[ "10" ] = manufacturaDeJsons("10");
 imagenesBilletes[ "20" ] = manufacturaDeJsons("20");
-
 imagenesBilletes["50"].imagen.addEventListener("load", function(){
     imagenesBilletes["50"].cargaOk = true;
-    dibujar();
 });
