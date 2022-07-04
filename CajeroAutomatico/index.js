@@ -97,17 +97,22 @@ function requestATM(){
                     
                 if(NoBilletesEntrega > caja[iterador].cantidad){
                     contadorBilletes = caja[iterador].cantidad;
-                
                 }else{
                     contadorBilletes = NoBilletesEntrega;
-                
                 }
+
                 billetesEntregados.push(new Billete(caja[iterador].valor,contadorBilletes));
                 peticionDinero = peticionDinero - (caja[iterador].valor*contadorBilletes);
+
+                if(caja[iterador].cantidad > 0){
+                    caja[iterador].cantidad -= NoBilletesEntrega;
+                }
+
             }
         }
     
         overlayHTML(peticionDinero);
+        overlayHTMLshowMoneyInBox();
 
     }else{
         outpuATM.innerHTML = "NO ES POSIBLE ENTREGARLE ESA CANTIDAD JOVEN DX"
@@ -115,13 +120,17 @@ function requestATM(){
 
 }
 
-function showMoneyInBox(){
-    outpuATM.innerHTML = "Billetes en caja <hr />";
+function overlayHTMLshowMoneyInBox(){
+
+    var inputATM = document.getElementById("inputATM");
+
+    inputATM.innerHTML = "Billetes en caja <hr />";
 
         for(var object of caja){
-                outpuATM.innerHTML = outpuATM.innerHTML + object.cantidad + " Billetes en caja de $" + object.valor + "<br />";
+            inputATM.innerHTML = inputATM.innerHTML + object.cantidad + " Billetes en caja de $" + object.valor + "<br />";
         }
 }
+
 
 var caja = [];
     caja.push(new Billete(50,3));
@@ -137,7 +146,7 @@ var NoBilletesEntrega = 0;
 var vp = document.getElementById("villaPLatzi");
 var papel = vp.getContext("2d");
 
-showMoneyInBox();
+overlayHTMLshowMoneyInBox();
 
 var btnExtraerDInero = document.getElementById("btnExtraerDInero");
     btnExtraerDInero.addEventListener("click",requestATM);
