@@ -55,7 +55,9 @@ function overlayHTML(peticionDinero){
 
 function getUnderValueBox(){
     
-    // Si en un futuro se insertan billetes de distintos valores a la caja podemos obtener, no importando la cantidad del tipo de estos, el que tenga menor valor.
+    // Si en un futuro se insertan billetes de distintos valores 
+    // a la caja podemos obtener, no importando la cantidad del tipo 
+    // de estos, el que tenga menor valor.
 
     let valores = [];
 
